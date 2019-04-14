@@ -45,6 +45,11 @@ has-flag@^3.0.0:
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
   integrity sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
 
+nanoassert@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/nanoassert/-/nanoassert-1.1.0.tgz#4f3152e09540fde28c76f44b19bbcd1d5a42478d"
+  integrity sha1-TzFS4JVA/eKMdvRLGbvNHVpCR40=
+
 supports-color@^5.3.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
@@ -56,3 +61,10 @@ wabt@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.10.tgz#7b397f72a8ecee28421334588ed2605d97caba6c"
   integrity sha512-UvxeSXiXLqw0NTMgGAJPm0GrToFDb062zen/QEOs55lVLLj7vi+ZRC90u6/1LSbyLGFKJndAGYF4hVkIeFFmtw==
+
+wat-tokenizer@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/wat-tokenizer/-/wat-tokenizer-0.3.0.tgz#c61c2b5c9f1dfd49e499aaf2e6065be99d69a8ec"
+  integrity sha512-C5XCpbNQc30NxdM9YbkltaopaJoLbhFY/qOnX46TjIzwvHoTbsY5NIf+zr7NTB2mJuafxWgf53KptkxNsfECIQ==
+  dependencies:
+    nanoassert "^1.1.0"

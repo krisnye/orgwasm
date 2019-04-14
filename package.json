@@ -6,11 +6,13 @@
     "license": "MIT",
     "scripts": {
         "watchBuild": "tsc -w",
-        "watchTest": "nodemon -q -e js,json ./test"
+        "watchTest": "nodemon -q ./test",
+        "debugTest": "node --inspect-brk ./test"
     },
     "dependencies": {
         "@types/node": "^11.13.4",
         "chalk": "^2.4.2",
-        "wabt": "^1.0.10"
+        "wabt": "^1.0.10",
+        "wat-tokenizer": "^0.3.0"
     }
 }
