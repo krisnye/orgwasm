@@ -1,0 +1,16 @@
+{
+    "name": "jswasmtest",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "krisnye@gmail.com",
+    "license": "MIT",
+    "scripts": {
+        "watchBuild": "tsc -w",
+        "watchTest": "nodemon -q -e js,json ./test"
+    },
+    "dependencies": {
+        "@types/node": "^11.13.4",
+        "chalk": "^2.4.2",
+        "wabt": "^1.0.10"
+    }
+}
