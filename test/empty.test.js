@@ -1,4 +1,4 @@
 
 module.exports = {
-    ast: `( module )`
+    source: `( module )`
 }

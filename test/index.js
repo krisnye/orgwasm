@@ -21,14 +21,16 @@ for (let file of files) {
 async function test(file) {
     //  load the test module
     let mod = require(path.join(__dirname, file));
-    //  compile the ast to an array buffer
-    let wasm = compile(mod.ast, file + "#ast");
-    let { module:wasmModule, instance: wasmInstance } = await WebAssembly.instantiate(wasm);
-    let wasmExports = wasmInstance.exports
-    if (mod.call) {
-        let actual = wasmExports[mod.call](...(mod.arguments || []))
-        let expected = mod.expected
-        assert.deepEqual(actual, expected);
-    }
-    // console.log(wasmExports);
+    let options = mod.options || {}
+    //  compile the ast
+    let wasm = compile(mod.source, file + "#source", options);
+    if (!options.text) {
+        let { module:wasmModule, instance: wasmInstance } = await WebAssembly.instantiate(wasm);
+        let wasmExports = wasmInstance.exports
+        if (mod.call) {
+            let actual = wasmExports[mod.call](...(mod.arguments || []));
+            let expected = mod.expected;
+            assert.deepEqual(actual, expected);
+        }
+    } 
 }

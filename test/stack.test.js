@@ -1,10 +1,7 @@
 
-const runtime = require("../lib/runtime").default;
-
 module.exports = {
-    ast: `
+    source: `
         (module
-            ${runtime}
             (func $add (param $lhs i32) (param $rhs i32) (result i32)
                 (local $return i32)
                 (call $_stack.enter)
@@ -18,6 +15,7 @@ module.exports = {
             (export "add" (func $add))
         )
     `,
+    options: { runtime: true },
     call: "add",
     arguments: [30, 12],
     expected: 42
