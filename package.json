@@ -5,8 +5,7 @@
     "author": "krisnye@gmail.com",
     "license": "MIT",
     "scripts": {
-        "watchBuild": "tsc -w",
-        "watchTest": "nodemon -q ./test",
+        "watch": "./watch.sh",
         "debugTest": "node --inspect-brk ./test"
     },
     "dependencies": {
