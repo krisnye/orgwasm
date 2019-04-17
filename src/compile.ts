@@ -5,7 +5,7 @@ import generateWasm from "./generateWasm";
 import runtime from "./runtime";
 import chalk from "chalk";
 
-export default function compile(inputWat, filename, options = { runtime: true, dump: false, text: false }) {
+export default function compile(inputWat, filename, options = { runtime: false, dump: false, text: false }) {
     // parse the input
     let ast = parse(inputWat, filename)
     // add the runtime to the module

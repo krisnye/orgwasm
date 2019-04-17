@@ -1,5 +1,5 @@
 (module
-    (memory 1 1)
+    (memory (import "js" "memory") 1)
     (func $add (param $lhs i32) (param $rhs i32) (result i32)
         (local $return i32)
         get_local $lhs
@@ -7,7 +7,7 @@
         i32.add
         set_local $return
         get_local $return
-        (i32.store (get_local $return) (i32.const 0))
+        (i32.store (i32.const 0) (get_local $return))
     )
     (export "add" (func $add))
 )

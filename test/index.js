@@ -27,7 +27,7 @@ async function test(name) {
     //  compile the ast
     let wasm = compile(source, path.relative(__dirname, file) + "#source", options);
     if (!options.text) {
-        let { module: wasmModule, instance: wasmInstance } = await WebAssembly.instantiate(wasm);
+        let { module: wasmModule, instance: wasmInstance } = await WebAssembly.instantiate(wasm, mod.imports);
         if (mod.test) {
             mod.test(wasmInstance.exports, assert);
         }
