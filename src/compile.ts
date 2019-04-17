@@ -5,25 +5,29 @@ import generateWasm from "./generateWasm";
 import runtime from "./runtime";
 import chalk from "chalk";
 
-export default function compile(inputWat, filename, options = { runtime: false, dump: false, text: false }) {
+function transform(inputWat, filename, options) {
     // parse the input
     let ast = parse(inputWat, filename)
     // add the runtime to the module
     if (options.runtime) {
         ast.splice(1, 0, ...runtime)
     }
+    // convert it to vanilla web assembly ast
+    let wasmAst = generateWasm(ast)
+    // format it back as a string
+    return stringify(wasmAst)
+}
+
+export default function compile(inputWat, filename, options = { transform: false, runtime: false, dump: false, text: false }) {
     function dump(e?) {
         let errors = e ? [...e.toString().match(/:(\d+)\:/g).map(x => x[1])] : []
         function formatLine(text, i) {
-            let color = errors.indexOf(i.toString()) >= 0 ? "red" : "white"
+            let color = errors.indexOf((i + 1).toString()) >= 0 ? "red" : "white"
             return `${chalk.dim((i + 1).toString().padStart(2, ' ') + ":")} ${chalk[color](text)}`
         }
         console.log(filename + ":\n" + outputWat.split('\n').map(formatLine).join('\n'))
     }
-    // convert it to vanilla web assembly ast
-    let wasmAst = generateWasm(ast)
-    // format it back as a string
-    let outputWat = stringify(wasmAst)
+    let outputWat = options.transform ? transform(inputWat, filename, options) : inputWat
     if (options.dump) {
         dump()
     }
